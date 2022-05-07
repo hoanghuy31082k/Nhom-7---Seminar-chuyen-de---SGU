@@ -1,0 +1,36 @@
+@use "./variable.scss" as *;
+
+@mixin media($device) {
+    @if $device == 'mb' {
+        @media only screen and (max-width: $x-small){
+            @content
+        }
+    }
+    @if $device == 'vt' {
+        @media only screen and (min-width: $x-small){
+            @content
+        }
+    }
+    @if $device == 'ht' {
+        @media only screen and (min-width: $small){
+            @content
+        }
+    }
+    @if $device == 'pc' {
+        @media only screen and (min-width: $medium){
+            @content
+        }
+    }
+    @if $device == 'xpc' {
+        @media only screen and (min-width: $large){
+            @content
+        }
+    }
+}
+
+@mixin flex($justify-content : space-between, $align-items: center , $flex-direction : row , $flex-warp : wrap) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-flow: $flex-direction $flex-warp;
+}

@@ -1,0 +1,206 @@
+$primary-color: #b100fc;
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+body{
+    overflow-x: hidden;
+}
+.blob{
+    position: absolute;
+    top: -50%;
+    right: -15%;
+    width: 70%;
+    z-index: -1;
+}
+
+.title{
+    text-align: center;
+    font-weight: bold;
+}
+header {
+    height: 100px;
+    color: #fff;
+    .logo {
+        font-size: 48px;
+        font-weight: bold;
+    }
+    ion-icon {
+        font-size: 24px;
+        color: #fff !important;
+        visibility: inherit;
+    }
+    a{
+        text-decoration: none !important;
+        font-size: 16px;
+        color: #fff !important;
+        padding: 8px 12px;
+        &.login{
+            border: 3px solid #fff;
+            border-radius: 8px;
+        }
+
+    }
+
+    .action{
+        text-align: right;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}
+#banner{
+    h1{
+        margin-block: 150px 50px;
+        font-size: 72px;
+        font-weight: bold;
+    }
+    .search {
+        width: 100%;
+        position: relative;
+        
+        input{
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+        ion-icon{
+            font-size: 30px;
+            position: absolute;
+            top: 3px;
+            right: 10px;
+            visibility: inherit;
+        }
+        .result{
+            max-height: 500px;
+            .item{
+                padding: 8px;
+                border: 2px solid #eee;
+                img{
+                    max-width: 80%;
+                }
+                h4{
+                    font-weight: bold;
+                }
+            }
+        }
+    }    
+}
+
+#book-list{
+    margin-top: 40px;
+    .item{
+        position: relative;
+        padding: 4px;
+        height: 400px;
+        .img{
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            img{
+                width: 100%;
+            }   
+            form{
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translate(-50%,0);
+                width: 100%;
+                input{
+                    width: 100%;
+                    padding-block: 8px;
+                    background-color: $primary-color;
+                    border: none;
+                    font-weight: bold;
+                    color: #fff;
+                }
+                
+            } 
+        }
+        
+        
+        .content{
+            text-align: center;
+        }
+    }
+}
+footer{
+    margin-block: 20px;
+    text-align: center;
+}
+
+.authform{
+    position: relative;
+    min-height: 80vh;
+    form{
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        padding: 20px;
+        background-color: #fff;
+        border: 2px solid #eee;
+        border-radius: 6px;
+        width: 500px;
+        input[type="text"],input[type="password"]{
+            width: 100%;
+            padding: 4px 8px;
+        }
+        input[type="submit"]{
+            margin-top: 20px;
+            padding: 8px 24px;
+            border: none;
+            color: white;
+            font-weight: bold;
+            background-color: $primary-color;
+            &:hover{
+                background-color: darken($primary-color,4);
+            }
+        }
+        label{
+            margin-block: 12px 4px;
+        }
+    }
+    
+}
+
+#checkout{
+    min-height: 80vh;
+    background: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    position: relative;
+    border: 1px solid #eee;
+    h1{
+        margin-bottom: 20px;
+    }
+    img{
+        width: 80%;
+    }
+    .total{
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        width: 100%;
+        padding-top: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-inline: 12px;
+    }
+    input[type="submit"]{
+        padding: 8px 24px;
+        border: none;
+        color: white;
+        font-weight: bold;
+        background-color: $primary-color;
+        &:hover{
+            background-color: darken($primary-color,4);
+        }
+    }
+}

@@ -1,0 +1,197 @@
+@use "./variable.scss" as *;
+@use "./base.scss" as *;
+@use "./mixins.scss" as *;
+@use "sass:color";
+
+// Navigation
+body{
+    height: 100vh;
+}
+section{
+    margin-block: 12px;
+}
+h1{
+    margin: 15px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgb(216, 216, 216);
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    thead tr{
+        background-color: $primary-color;
+        text-align: left;
+        color: #fff;
+        
+    }
+    th,td{
+        padding: 4px;
+        border: 1px solid rgb(216, 216, 216);
+        max-width: 90%;
+        &:nth-child(1){
+            text-align: center;
+            width: 30px;
+        }
+    }
+}
+
+input[type="text"]{
+    padding: 8px 12px;
+    border: 2px solid $primary-color;
+    outline: none;
+    width: 100%;
+    position: relative;
+}
+
+.button{
+    display: block;
+    padding: 8px 24px;
+    background-color: $primary-color;
+    color: #fff;
+    width: fit-content;
+    &.green{
+        background-color: rgb(4, 156, 4);
+    }
+    &.middle{
+        margin: auto;
+    }
+}
+
+.hidden-mb {
+    @include media(mb){
+       display: none; 
+    }
+    
+}
+.navigation {
+    
+    margin: 0;
+    nav{
+        padding-inline: 0 !important;
+        height: 100vh;
+        background-color: $admin-left-nav;
+        transition: all 0.5s ease-in-out;
+        .hamburger{
+            border-bottom: 2px solid darken($admin-left-nav, $amount: 2);
+            background-color: darken($admin-left-nav, $amount: 1);
+            .icon{
+                width: $admin-header-height;
+                height: $admin-header-height;
+                cursor: pointer;
+                @include flex($justify-content: center);
+                ion-icon{
+                    color: #fff;
+                    font-size: 32px;
+                }
+                
+            }
+            
+        }
+        .menu{
+            ul{
+                li{
+                    border-bottom: 1px solid darken($admin-left-nav, $amount: 2);
+                    cursor: pointer;
+                    max-height: $admin-header-height;
+                    color: #fff;
+                    @include flex($justify-content: flex-start);
+                    span{
+                        width: $admin-header-height;
+                        height: $admin-header-height;
+                        @include flex($justify-content : center);
+                        ion-icon{
+                            font-size: 28px;
+                        }    
+                    }
+                    &:hover{
+                        background-color: darken($admin-left-nav, $amount: 2)
+                    }
+                    &.dropdown{
+                        transition: 0.7s max-height ease-out;
+                        .dropdown-menu{
+                            width: 100%;
+                            li{
+                                width: 100%;
+                                height: $admin-header-height;
+                                background-color: darken($admin-left-nav, $amount: 1);
+                                padding-left: $admin-header-height;
+                                border-bottom: 1px solid lighten($admin-left-nav, $amount: 1);
+                                &:hover{
+                                    background-color: lighten($admin-left-nav, $amount: 1);
+                                }
+                            }
+                        }
+                        &.open{
+                            background-color: darken($admin-left-nav, $amount: 2);
+                            max-height: 300px;
+                        }
+                    }
+                }
+            }
+        }
+        &.close{
+            width: $admin-header-height;
+            overflow: hidden;
+        }
+    }
+    .workplace{
+        background-color: #f7f7f7;
+        transition: all 0.5s ease-in-out;
+        height: 100vh;
+        padding: 0;
+        header{
+            height: $admin-header-height;
+            background-color: $primary-color;
+        }
+        &-section{
+            overflow-y: initial;
+        }
+        &.close{
+            width: calc(100% - $admin-header-height);
+        }
+
+        .stats-card {
+            overflow: initial;
+            .items{
+                overflow: inherit;
+                .item{
+                    border-radius: 5px;
+                    padding: 10px;
+                    height: 100px;
+                    background-color: #fff;
+                    box-shadow: 1px 1px 6px -1px rgba(0,0,0,0.28);
+                    -webkit-box-shadow: 1px 1px 6px -1px rgba(0,0,0,0.28);
+                    -moz-box-shadow: 1px 1px 6px -1px rgba(0,0,0,0.28);
+                    overflow: initial;
+                    h4{
+                        font-weight: bold;
+                    }
+                    span{
+                        display: block;
+                        margin-top: 16px;
+                        font-size: 28px;
+                    }    
+                }
+                
+            }
+        }
+
+        .crud {
+            overflow: initial;
+            
+            .table{
+                border-radius: 5px;
+                width: 100%;
+                padding: 10px;
+                background-color: #fff;
+                box-shadow: 1px 1px 6px -1px rgba(0,0,0,0.28);
+                -webkit-box-shadow: 1px 1px 6px -1px rgba(0,0,0,0.28);
+                -moz-box-shadow: 1px 1px 6px -1px rgba(0,0,0,0.28);
+                .toolbar{
+                    margin-block: 8px;
+                }
+            }
+            
+        }
+    }
+}

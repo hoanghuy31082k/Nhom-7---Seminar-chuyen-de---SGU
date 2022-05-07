@@ -1,0 +1,119 @@
+@use "./variable.scss" as *;
+@use "./mixins.scss" as *;
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.container{
+    margin: auto;
+    @include media(xpc){
+        width: 1170px;
+    }
+    @include media(pc){
+        width: 1170px;
+    }
+    @include media(ht){
+        width: 960px;
+    }
+    @include media(vt){
+        width: 720px;
+    }
+    @include media(mb){
+        width: calc(100px - 15px);
+    }
+}
+
+.d-flex{
+    @include flex($align-items:flex-start);
+    .fl-xpc-0 {
+        @include media(xpc){
+            display: none;
+        }
+        
+    }
+    .fl-pc-0 {
+        @include media(pc){
+            display: none;
+        }
+    }  
+    .fl-ht-0 {
+        @include media(ht){
+            display: none;
+        }
+    }  
+    .fl-vt-0 {
+        @include media(vt){
+            display: none;
+        }
+    }  
+    .fl-mb-0 {
+        @include media(mb){
+            display: none;
+        }
+    } 
+    @for $col from 1 to 13 {
+        .fl-mb-#{$col} {
+            @include media(mb){
+                display: block;
+                padding-inline: 15px;
+                width: calc(100% / 12 * $col);
+            }
+        }
+    }
+    @for $col from 1 to 13 {
+        .fl-vt-#{$col} {
+            @include media(vt){
+                display: block;
+                padding-inline: 10px;
+                width: calc(100% / 12 * $col);
+            }
+        }
+    }
+    @for $col from 1 to 13 {
+        .fl-ht-#{$col} {
+            @include media(ht){
+                display: block;
+                padding-inline: 15px;
+                width: calc(100% / 12 * $col);
+            }
+        }
+    }
+    @for $col from 1 to 13 {
+        .fl-pc-#{$col} {
+            @include media(pc){
+                display: block;
+                padding-inline: 15px;
+                width: calc(100% / 12 * $col);
+            }
+        }
+    }
+    @for $col from 1 to 13 {
+        .fl-xpc-#{$col} {
+            @include media(xpc){
+                display: block;
+                padding-inline: 15px;
+                width: calc(100% / 12 * $col);
+            }
+        }
+    }
+
+    
+    
+}
+
+.no-gap {
+    gap: 0;
+}
