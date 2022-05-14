@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','username','password','phone'];
+    protected $fillable = ['name','username','password','phone','role_id'];
 
     /**
      * Get the user that owns the User
@@ -20,8 +20,13 @@ class User extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function user()
+    public function borrow()
     {
         return $this->hasMany(Borrow::class, 'user_id', 'id');
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id', 'id');
     }
 }

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('rfid_tags', function (Blueprint $table) {
             $table->id();
             $table->string('rfid');
-            $table->string('book_id');
+            $table->integer('book_id');
             $table->timestamps();
         });
     }

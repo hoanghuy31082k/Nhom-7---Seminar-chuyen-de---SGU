@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
-use App\Models\Borrow;
-use Carbon\Carbon;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
-class BorrowController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,32 +35,16 @@ class BorrowController extends Controller
      */
     public function store(Request $request)
     {
-        $borrow= Borrow::create([
-            'user_id'=> session()->get('LoggedUser')->id,
-            'begindate'=> Carbon::today()->toDateString(),
-            'enddate'=> Carbon::today()->addDays(7)->toDateString(),
-            'returndate'=> null
-        ]);
-        foreach (Cart::content() as $cart) {
-            $borrow->book()->attach(Book::find($cart->id)->id);
-            Book::find($cart->id)->update([
-                'status' => '1'
-            ]);
-        }
-        Cart::destroy();
-        if (!$borrow) {
-            return back()->with('Fail','Mượn thất bại!');
-        }
-        return back()->with('Success','Mượn thành công! Mã mượn của bạn là :'.$borrow->id);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Borrow  $borrow
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function show(Borrow $borrow)
+    public function show(Role $role)
     {
         //
     }
@@ -71,10 +52,10 @@ class BorrowController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Borrow  $borrow
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit(Borrow $borrow)
+    public function edit(Role $role)
     {
         //
     }
@@ -83,10 +64,10 @@ class BorrowController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Borrow  $borrow
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Borrow $borrow)
+    public function update(Request $request, Role $role)
     {
         //
     }
@@ -94,10 +75,10 @@ class BorrowController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Borrow  $borrow
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Borrow $borrow)
+    public function destroy(Role $role)
     {
         //
     }

@@ -22,9 +22,16 @@ Route::get('/login', [UserController::class,'login'])->name('login');
 Route::get('/register', [UserController::class,'register'])->name('register');
 Route::get('/check', [UserController::class,'check'])->name('check');
 Route::get('/store', [UserController::class,'store'])->name('store');
-Route::get('/logout', [UserController::class,'logout'])->name('logout');
-Route::get('/checkout', [ClientController::class,'checkout'])->name('checkout');
-Route::get('/order', [BorrowController::class,'store'])->name('order');
+Route::group(['middleware'=>'authcheck:user'],function (){
+    Route::get('/logout', [UserController::class,'logout'])->name('logout');
+    Route::get('/checkout', [ClientController::class,'checkout'])->name('checkout');
+    Route::get('/order', [BorrowController::class,'store'])->name('order');
+});
 
-Route::get('/admin', [AdminController::class,'dashboard'])->name('dashboard');
+Route::group(['middleware'=>'authcheck:admin'],function (){
+    Route::get('/admin', [AdminController::class,'dashboard'])->name('dashboard');
+});
+
+
+
 

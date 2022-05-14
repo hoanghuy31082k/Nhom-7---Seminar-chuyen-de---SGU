@@ -82,7 +82,8 @@ class UserController extends Controller
             'username'=>$request->input('username'),
             'name'=>$request->input('name'),
             'phone'=>$request->input('phone'),
-            'password'=>Hash::make($request->input('password'))
+            'password'=>Hash::make($request->input('password')),
+            'role_id' => 1
         ]);
         if(!$create){
             return redirect("/")->with('Fail','Đăng ký thất bại!');

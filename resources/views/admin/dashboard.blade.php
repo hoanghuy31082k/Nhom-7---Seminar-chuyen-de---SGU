@@ -21,7 +21,7 @@
         ]
     ])
     @include('component.crud',[
-        'title'=>'Danh mục sản phẩm',
+        'title'=>'Quản lý mượn',
         'model' => $borrow,
         'prefix' => 'borrow',
         'data' => [

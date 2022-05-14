@@ -22,6 +22,9 @@
         <div>
             <strong>Tổng: </strong>{{ $carts->groupBy('id')->count() }}
         </div>
+        @if (session()->has('Success'))
+            <span style="color: green">{{  session()->get('Success')}}</span>
+        @endif
         <form action="{{ route('order') }}">
             <input type="submit" value="Đăng ký">
         </form>
