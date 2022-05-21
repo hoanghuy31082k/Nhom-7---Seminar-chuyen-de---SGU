@@ -34,7 +34,7 @@ class UserController extends Controller
             } else {
                 return back()->with('fail','Mật khẩu không đúng!');
             }
-            
+
         }
     }
     public function logout()
@@ -83,7 +83,7 @@ class UserController extends Controller
             'name'=>$request->input('name'),
             'phone'=>$request->input('phone'),
             'password'=>Hash::make($request->input('password')),
-            'role_id' => 1
+            'role_id' => 2
         ]);
         if(!$create){
             return redirect("/")->with('Fail','Đăng ký thất bại!');
