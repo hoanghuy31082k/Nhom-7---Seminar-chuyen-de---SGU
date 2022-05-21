@@ -117,7 +117,7 @@ public class MainGUI extends JFrame {
 			}
 		}
 		if (flag==0) {
-			JOptionPane.showMessageDialog(null, "ID "+EPC+" không có trong danh sách!", "Thông báo", 1);
+			JOptionPane.showMessageDialog(null, "Mã "+EPC+" không có trong danh sách!", "Thông báo", 1);
 		}
 	}
 	
@@ -255,6 +255,7 @@ public class MainGUI extends JFrame {
 								model.addRow(new String[] {
 										RFIDBLL.getRFIDbyBookID(br.getBook_id()).getRfid(),BookBLL.getBookByID(br.getBook_id()).getTitle(),getStatus(BookBLL.getBookByID(br.getBook_id()),br.getBook_id() , check)
 								});
+								System.out.println(BookBLL.getBookByID(br.getBook_id()).getTitle());
 								
 							}
 							msgSuccess.setText("Tra cứu mã mượn thành công!");
@@ -324,20 +325,20 @@ public class MainGUI extends JFrame {
 					JOptionPane.showMessageDialog(null, "Xin hãy cung cấp mã mượn!", "Thông báo", 1);
 				} else {
 					CAENRFIDReader MyReader = new CAENRFIDReader();
-					EPC = new ArrayList<>();
-					EPC.add("300F4F573AD001C08369A28F");
-					EPC.add("300F4F573AD001C08369A22E");
-					EPC.add("300F4F573AD001C08369A245");
-					EPC.add("300F4F573AD001C08369A249");
-					EPC.add("300F4F573AD001C08369A241");
-		            temp="";
-		            
-		            for (String id:  EPC) {
-		            	checkRFID(id, check, currentBorrrow);
-		            	temp=temp+id+",";
-		            }
-		            temp=temp.substring(0, temp.lastIndexOf(","));
-		            msgScannerinfo.setText(temp);
+//					EPC = new ArrayList<>();
+//					EPC.add("300F4F573AD001C08369A28F");
+//					EPC.add("300F4F573AD001C08369A22E");
+//					EPC.add("300F4F573AD001C08369A245");
+//					EPC.add("300F4F573AD001C08369A249");
+//					EPC.add("300F4F573AD001C08369A241");
+//		            temp="";
+//		            
+//		            for (String id:  EPC) {
+//		            	checkRFID(id, check, currentBorrrow);
+//		            	temp=temp+id+",";
+//		            }
+//		            temp=temp.substring(0, temp.lastIndexOf(","));
+//		            msgScannerinfo.setText(temp);
 		            
 		            
 		            model= new DefaultTableModel() {
@@ -371,112 +372,107 @@ public class MainGUI extends JFrame {
 					}
 					
 					table.setModel(model);
-//		            
-//		            for(boolean a: MainGUI.check) {
-//		            	System.out.println(a);
-//		            }
-//			        try {
-//			            MyReader.Connect(CAENRFIDPort.CAENRFID_TCP, "192.168.1.2");
-//			            CAENRFIDLogicalSource MySource = MyReader.GetSource("Source_0");
-	//
-//			            //get Reader Infor
-//			            CAENRFIDReaderInfo Info = MyReader.GetReaderInfo();
-	//
-//			            String Model = Info.GetModel();
-//			            String SerialNumber = Info.GetSerialNumber();
-//			            String FWRelease = MyReader.GetFirmwareRelease();
-//			            // tinh theo cong de xac dinh khoang cach
-//			            int power = MyReader.GetPower();
-	//
-//			            // in ra thong tin
-//			            System.out.println("Model: "+Model);
-//			            System.out.println("SerialNumber: "+SerialNumber);
-//			            System.out.println("FWRelease: "+FWRelease);
-//			            System.out.println("power: "+power);
-	//
-//			            System.out.println("");
-//			            //thoi gian nhan
-//			            MySource.SetSession_EPC_C1G2(CAENRFIDLogicalSourceConstants.EPC_C1G2_SESSION_S1);
-	//
-//			            // chua thong tin cua cac tag
-//			            // chua tat ca tong tin quet tren device
-//			            CAENRFIDTag[] MyTags = MySource.InventoryTag();
-//			            
-//			            EPC = new ArrayList<>();
-//			            
-//			            if (MyTags.length > 0)
-//			            {
-//			                // show list cac thong tin san pham
-//			                //id san pham la duy nhat: exmple 48718273123
-//			                //
-//			                for (int i = 0; i < MyTags.length; i++)
-//			                {
-//			                    System.out.println("EPC: "+ hex(MyTags[i].GetId())  +
-//			                            " | Antenna : " +MyTags[i].GetAntenna() +
-//			                            " | TID:"+ (MyTags[i].GetTID()) +
-//			                            " | RSSI : "+Integer.valueOf(MyTags[i].GetRSSI()));
-//			                    EPC.add(hex(MyTags[i].GetId()));
-//			                }
-//			                
-//			            }
-//			            temp="";
-//			            
-//			            for (String id:  EPC) {
-//			            	checkRFID(id, check, currentBorrrow);
-//			            	temp=temp+id+",";
-//			            	
-//			            }
-//			            
-//			            
-//			            model= new DefaultTableModel() {
-//							@Override
-//							public boolean isCellEditable(int row, int column) {
-//						       //all cells false
-//						       return false;
-//						    }
-//						};
-//						
-//						
-//						model.setColumnIdentifiers(new String[] {"RFID","Tên sách","Tình trạng"});
-//						if (tfBorrowID.getText().isEmpty()) {
-//							msgFail.setText("");
-//							msgSuccess.setText("");
-//						} else {
-//							if (!Borrow_detailBLL.getBorrowDetailbyId(Integer.parseInt(tfBorrowID.getText())).isEmpty()) {
-//								currentBorrrow=Integer.parseInt(tfBorrowID.getText());
-//								for (Borrow_detailDTO br: Borrow_detailBLL.getBorrowDetailbyId(Integer.parseInt(tfBorrowID.getText()))) {
-//									model.addRow(new String[] {
-//											RFIDBLL.getRFIDbyBookID(br.getBook_id()).getRfid(),BookBLL.getBookByID(br.getBook_id()).getTitle(),getStatus(BookBLL.getBookByID(br.getBook_id()),br.getBook_id() , check)
-//									});
-//									
-//								}
-//								msgSuccess.setText("Tra cứu mã mượn thành công!");
-//								msgFail.setText("");
-//							} else {
-//								msgFail.setText("Tra cứu mã mượn thất bại!");
-//								msgSuccess.setText("");
-//							}	
-//						}
-//						
-//						table.setModel(model);
-////			            
-////			            for(boolean a: MainGUI.check) {
-////			            	System.out.println(a);
-////			            }
-	//
-	//
-//			            MyReader.Disconnect();
-//			        }catch(Exception ex) {
-//			            System.out.println(ex);
-//			            if(MyReader != null) {
-//			                try {
-//								MyReader.Disconnect();
-//							} catch (CAENRFIDException e1) {
-//								// TODO Auto-generated catch block
-//								e1.printStackTrace();
-//							}
-//			            }
-//			        }
+			        try {
+			            MyReader.Connect(CAENRFIDPort.CAENRFID_TCP, "192.168.1.2");
+			            CAENRFIDLogicalSource MySource = MyReader.GetSource("Source_0");
+	
+			            //get Reader Infor
+			            CAENRFIDReaderInfo Info = MyReader.GetReaderInfo();
+	
+			            String Model = Info.GetModel();
+			            String SerialNumber = Info.GetSerialNumber();
+			            String FWRelease = MyReader.GetFirmwareRelease();
+			            // tinh theo cong de xac dinh khoang cach
+			            int power = MyReader.GetPower();
+	
+			            // in ra thong tin
+			            System.out.println("Model: "+Model);
+			            System.out.println("SerialNumber: "+SerialNumber);
+			            System.out.println("FWRelease: "+FWRelease);
+			            System.out.println("power: "+power);
+	
+			            System.out.println("");
+			            //thoi gian nhan
+			            MySource.SetSession_EPC_C1G2(CAENRFIDLogicalSourceConstants.EPC_C1G2_SESSION_S1);
+	
+			            // chua thong tin cua cac tag
+			            // chua tat ca tong tin quet tren device
+			            CAENRFIDTag[] MyTags = MySource.InventoryTag();
+			            
+			            EPC = new ArrayList<>();
+			            
+			            if (MyTags.length > 0)
+			            {
+			                // show list cac thong tin san pham
+			                //id san pham la duy nhat: exmple 48718273123
+			                //
+			                for (int i = 0; i < MyTags.length; i++)
+			                {
+			                    System.out.println("EPC: "+ hex(MyTags[i].GetId())  +
+			                            " | Antenna : " +MyTags[i].GetAntenna() +
+			                            " | TID:"+ (MyTags[i].GetTID()) +
+			                            " | RSSI : "+Integer.valueOf(MyTags[i].GetRSSI()));
+			                    EPC.add(hex(MyTags[i].GetId()));
+			                }
+			                
+			            }
+			            temp="";
+			            
+			            for (String id:  EPC) {
+			            	checkRFID(id, check, currentBorrrow);
+			            	temp=temp+id+",";
+			            	
+			            }
+						temp=temp.substring(0, temp.lastIndexOf(","));
+			            msgScannerinfo.setText(temp);
+			            
+			            
+			            model= new DefaultTableModel() {
+							@Override
+							public boolean isCellEditable(int row, int column) {
+						       //all cells false
+						       return false;
+						    }
+						};
+						
+						
+						model.setColumnIdentifiers(new String[] {"RFID","Tên sách","Tình trạng"});
+						if (tfBorrowID.getText().isEmpty()) {
+							msgFail.setText("");
+							msgSuccess.setText("");
+						} else {
+							if (!Borrow_detailBLL.getBorrowDetailbyId(Integer.parseInt(tfBorrowID.getText())).isEmpty()) {
+								currentBorrrow=Integer.parseInt(tfBorrowID.getText());
+								for (Borrow_detailDTO br: Borrow_detailBLL.getBorrowDetailbyId(Integer.parseInt(tfBorrowID.getText()))) {
+									model.addRow(new String[] {
+											RFIDBLL.getRFIDbyBookID(br.getBook_id()).getRfid(),BookBLL.getBookByID(br.getBook_id()).getTitle(),getStatus(BookBLL.getBookByID(br.getBook_id()),br.getBook_id() , check)
+									});
+									
+								}
+								msgSuccess.setText("Tra cứu mã mượn thành công!");
+								msgFail.setText("");
+							} else {
+								msgFail.setText("Tra cứu mã mượn thất bại!");
+								msgSuccess.setText("");
+							}	
+						}
+						
+						table.setModel(model);
+
+	
+	
+			            MyReader.Disconnect();
+			        }catch(Exception ex) {
+			            System.out.println(ex);
+			            if(MyReader != null) {
+			                try {
+								MyReader.Disconnect();
+							} catch (CAENRFIDException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+			            }
+			        }
 				}
 				
 				

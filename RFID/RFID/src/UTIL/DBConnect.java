@@ -12,7 +12,7 @@ public class DBConnect {
 	public static Connection getConnect() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+db,username,password);
+			Connection con = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+db+"?useUnicode=true&characterEncoding=UTF-8",username,password);
 			return con;
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Kết nối thất bại", "Lỗi", 0);
