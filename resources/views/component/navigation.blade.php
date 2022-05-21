@@ -7,7 +7,8 @@
         </div>
         <div class="menu">
             <ul>
-                <li><span><ion-icon name="cellular-outline"></ion-icon></span>Dashboard</li>
+                <li onclick="location.href='{{ route('dashboard') }}'"><span><ion-icon name="cellular-outline"></ion-icon></span>Dashboard</li>
+                <li onclick="location.href='{{ route('admin.book') }}'"><span><ion-icon name="book-sharp"></ion-icon></span>Sách</li>
                 {{-- <li class="dropdown"><span>
                     <ion-icon name="menu-sharp"></ion-icon></span>Dashboard
                     <ul class="dropdown-menu">

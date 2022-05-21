@@ -16,23 +16,23 @@ class RFIDSeeder extends Seeder
     public function run()
     {
         RfidTag::create([
-            'rfid'=>'41003200300036003400300030003100',
+            'rfid'=>'300F4F573AD001C08369A28F',
             'book_id'=>1
         ]);
         RfidTag::create([
-            'rfid'=>'300EFE2F94D01C42540BE4F9',
+            'rfid'=>'300F4F573AD001C08369A22E',
             'book_id'=>2
         ]);
         RfidTag::create([
-            'rfid'=>'E20000173001017129000096',
+            'rfid'=>'300F4F573AD001C08369A245',
             'book_id'=>3
         ]);
         RfidTag::create([
-            'rfid'=>'300EFE2F94D01C02540BE93A',
+            'rfid'=>'300F4F573AD001C08369A249',
             'book_id'=>4
         ]);
         RfidTag::create([
-            'rfid'=>'E200001730010136290000DD',
+            'rfid'=>'300F4F573AD001C08369A241',
             'book_id'=>5
         ]);
     }

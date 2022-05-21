@@ -30,6 +30,7 @@ Route::group(['middleware'=>'authcheck:user'],function (){
 
 Route::group(['middleware'=>'authcheck:admin'],function (){
     Route::get('/admin', [AdminController::class,'dashboard'])->name('dashboard');
+    Route::get('/admin/book', [AdminController::class,'book'])->name('admin.book');
 });
 
 

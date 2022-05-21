@@ -18,4 +18,14 @@ class Book extends Model
     {
         return $this->belongsToMany(Book::class, 'borrow_detail', 'book_id', 'borrow_id');
     }
+
+    /**
+     * Get the user associated with the Book
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function rfid()
+    {
+        return $this->hasOne(RfidTag::class, 'book_id', 'id');
+    }
 }

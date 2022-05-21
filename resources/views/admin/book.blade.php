@@ -1,5 +1,5 @@
 @extends('admin',[
-    'title' => 'Dashboard'
+    'title' => 'Sách'
 ])
 @section('content')
     @include('component.stats-card',[
@@ -11,10 +11,10 @@
             [
                 'name'=>'Sách còn lại',
                 'count'=>$count2,
-                'color'=> 'green'
+                'color'=> 'red'
             ],
             [
-                'name'=>'Số lần trả sách',
+                'name'=>'Sách đang xử lí',
                 'count'=>$count3
             ]
         
@@ -22,40 +22,34 @@
     ])
     {{-- {{ dd($borrow[0]->returndate) }} --}}
     @include('component.crud',[
-        'title'=>'Mượn',
-        'model' => $borrow,
-        'prefix' => 'borrow',
+        'title'=>'Sách',
+        'model' => $book,
+        'prefix' => 'book',
         'data' => [
             [
                 'primary' => true, // Gán màu
-                'name' => 'ID',
-                'attr' => 'id',
+                'name' => 'RFID',
+                'attr' => 'rfid',
+                'attr2' => 'rfid',
                 'onmobile' => true
             ],
             [
                 'primary' => true, // Gán màu
-                'name' => 'Tên người mượn',
-                'attr' => 'user',
-                'attr2' => 'name',
+                'name' => 'Tên sách',
+                'attr' => 'title',
                 'onmobile' => true
             ],
             [
                 'primary' => true, // Gán màu
-                'name' => 'Ngày mượn',
-                'attr' => 'begindate',
+                'name' => 'Tên tác giả',
+                'attr' => 'author',
                 'onmobile' => true
-            ],
+],
             [
-                'primary' => true, // Gán màu
-                'name' => 'Hạn mượn',
-                'attr' => 'enddate',
-                'onmobile' => false
-            ],
-            [
-                'type' => 'statusborrow',
+                'type' => 'statusbook',
                 'primary' => true, // Gán màu
                 'name' => 'Tình trạng',
-                'attr' => 'returndate',
+                'attr' => 'status',
                 'onmobile' => false
             ]
             
